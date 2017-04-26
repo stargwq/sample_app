@@ -15,7 +15,17 @@ script:
   - bundle exec rake db:create
   - bundle exec rake db:migrate
   - bundle exec rake test
+  /test.sh
   
 deploy:
   skip_cleanup: true
+  
+git:
+  depth: 3
+branches:
+  only:
+    - master
+    #提供正则匹配分支
+    #- /^char.*$/
+    
 
