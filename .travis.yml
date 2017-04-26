@@ -25,7 +25,7 @@ cache:
 install:
   - bundle install
 script:
-  - bundle exec rake db:migrate
+#  - bundle exec rake db:migrate
   - bundle exec rake test
   - bundle exec rake test:$TEST_SUITE
   #./test.sh
