@@ -7,12 +7,12 @@ services:
 language: ruby
 #测试在docker上跑
 before_install:
-  - sudo apt-get update
-  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
-  - docker pull carlad/sinatra
-  - docker run -d -p 127.0.0.1:80:4567 carlad/sinatra /bin/sh -c "cd /root/sinatra;
-  - docker ps -a
-  - docker run carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec rake test"
+#  - sudo apt-get update
+#  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
+#  - docker pull carlad/sinatra
+#  - docker run -d -p 127.0.0.1:80:4567 carlad/sinatra /bin/sh -c "cd /root/sinatra;
+#  - docker ps -a
+#  - docker run carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec rake test"
   - mysql -e 'CREATE DATABASE sample_app_test;'
 rvm:
   - 2.3.1
