@@ -1,0 +1,17 @@
+sudo: false
+language: ruby
+rvm:
+  - 2.3.1
+  - 2.4.1
+cache:
+  bundler: true
+  directories:
+    - flow_test
+
+install:
+  - bundle install
+script:
+  - bundle exec rubocop
+  - bundle exec rake test
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
