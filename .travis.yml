@@ -1,37 +1,56 @@
 sudo: required
 services:
-- docker
-- rabbitmq
-- mysql
-- redis-server
+  - docker
+  - rabbitmq
+  - mysql
+  - redis-server
 language: ruby
+#测试在docker上跑
 before_install:
-- sudo apt-get update
-- sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
-- docker pull carlad/sinatra
-- docker run -d -p 127.0.0.1:80:4567 carlad/sinatra /bin/sh -c "cd /root/sinatra;
-  bundle exec foreman start;"
-- docker ps -a
-- docker run carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec rake test"
-- mysql -e 'CREATE DATABASE sample_app_test;'
+  - sudo apt-get update
+  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
+  - docker pull carlad/sinatra
+  - docker run -d -p 127.0.0.1:80:4567 carlad/sinatra /bin/sh -c "cd /root/sinatra;
+  - docker ps -a
+  - docker run carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec rake test"
+  - mysql -e 'CREATE DATABASE sample_app_test;'
 rvm:
-- 2.3.1
-- 2.4.1
+  - 2.3.1
+  - 2.4.1
 cache:
   timeout: 1000
   bundler: true
   directories:
-  - flow_test
+    - flow_test
 install:
-- bundle install
+  - bundle install
 script:
-- bundle exec rake db:migrate
-- bundle exec rake test
-- bundle exec rake test:$TEST_SUITE
+  - bundle exec rake db:migrate
+  - bundle exec rake test
+  - bundle exec rake test:$TEST_SUITE
+  #./test.sh
+before_deploy: "echo 'ready deploy...'"  
+  
 deploy:
+ #- provider: ddd
+  # email: "aaa"
+   #password: "aaa" #加密的  travis encrypt "YOUR PASSWORD" --add deploy.password
+ - provider: heroku
+    #travis encrypt $(heroku auth:token) --add deploy.api_key
+   api_key:
+     secure: aaQJbkmoKJMxqhRauGFWLkHIvXq3NlTXp6OM9gMksM7c1fyBpx4PmwRzFeWvNrcgDNBRDzqu0yuj70SG/cHFQfNRCSZeKLJ/XmU0XvqEUPA731i0YLUgn/K5tTfGoNO2X9QgylnJT/lb/62Na7ONWb4Rhron/baizpApoMXPDdJVfpiEm4aqCwPq4fnnsM7ruuuBK4dLoES+hN2MWbEIsDWdcCdjUByNqgb2JAGtp805oAH/rHvgMGG/8M5fGUoK/EAWqHb7d7dJFMF5+mIKYcu99I82rvRLpALFr91Io6Xow1qTFXAj2C+1hsUYoAq1+xppN6uzACP3ZWmd56N/JdVb0zHoYPuFn+lecSK9MZlqb7RFR4ZvRLXmJHFbj2OpfFc52foyYd6w6JdJjOwb3oSFgRmjnTurjnaTwmbOnSy/B22MwcX5B8qLpPkioDkbB6IYjx9X6eQRyRFVXhQsIaKfYtYzTktaChTsN+yI4t6u7S4e/PF63nRdKmj4Uy3yhaoQmhzH3dm+J7waeryaVPwgyxbMi8wIbX50lxsIbavKpci5o5DPQiJAdGoOLlRqeTrM4EnuofPRWvA79MIURjd69/3CC5uXgAbBfe4dPMscxaYHIzd+25rKComnOpnfucqDu47nb68bcoWBCqejLy5/UoYlqSKVmnT7aCQyYBU=
+   on:
+     all_branches: true
+   run:
+     - "rake db:migrate"
+     - restart
+     - "rake cleanup"
+ #prevent Travis CI from resetting your working directory and deleting all changes made during the build
   skip_cleanup: true
-  api_key:
-    secure: aaQJbkmoKJMxqhRauGFWLkHIvXq3NlTXp6OM9gMksM7c1fyBpx4PmwRzFeWvNrcgDNBRDzqu0yuj70SG/cHFQfNRCSZeKLJ/XmU0XvqEUPA731i0YLUgn/K5tTfGoNO2X9QgylnJT/lb/62Na7ONWb4Rhron/baizpApoMXPDdJVfpiEm4aqCwPq4fnnsM7ruuuBK4dLoES+hN2MWbEIsDWdcCdjUByNqgb2JAGtp805oAH/rHvgMGG/8M5fGUoK/EAWqHb7d7dJFMF5+mIKYcu99I82rvRLpALFr91Io6Xow1qTFXAj2C+1hsUYoAq1+xppN6uzACP3ZWmd56N/JdVb0zHoYPuFn+lecSK9MZlqb7RFR4ZvRLXmJHFbj2OpfFc52foyYd6w6JdJjOwb3oSFgRmjnTurjnaTwmbOnSy/B22MwcX5B8qLpPkioDkbB6IYjx9X6eQRyRFVXhQsIaKfYtYzTktaChTsN+yI4t6u7S4e/PF63nRdKmj4Uy3yhaoQmhzH3dm+J7waeryaVPwgyxbMi8wIbX50lxsIbavKpci5o5DPQiJAdGoOLlRqeTrM4EnuofPRWvA79MIURjd69/3CC5uXgAbBfe4dPMscxaYHIzd+25rKComnOpnfucqDu47nb68bcoWBCqejLy5/UoYlqSKVmnT7aCQyYBU=
+
+after_deploy:
+  - ./after_deploy_1.sh
+  - ./after_deploy_2.sh
 git:
   depth: 3
 branches:
