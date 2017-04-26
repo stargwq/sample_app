@@ -32,10 +32,26 @@ script:
   - bundle exec rake test
   - bundle exec rake test:$TEST_SUITE
   #/test.sh
+before_deploy: "echo 'ready deploy...'"  
   
 deploy:
+ #- provider: ddd
+  # email: "aaa"
+   #password: "aaa" #加密的  travis encrypt "YOUR PASSWORD" --add deploy.password
+ - provider: heroku
+   api_key: "aaaaaaa" #travis encrypt $(heroku auth:token) --add deploy.api_key
+   on:
+     all_branches: true
+   run:
+     - "rake db:migrate"
+     - restart
+     - "rake cleanup"
+ #prevent Travis CI from resetting your working directory and deleting all changes made during the build
   skip_cleanup: true
   
+after_deploy:
+  - ./after_deploy_1.sh
+  - ./after_deploy_2.sh
 git:
   depth: 3
   
