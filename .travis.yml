@@ -1,5 +1,16 @@
-sudo: false
+sudo: required
+#可以在docker上跑
+services:
+  - docker
 language: ruby
+#测试在docker上跑
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine #
+  - docker pull carlad/sinatra
+  - docker run -d -p 127.0.0.1:80:4567 carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec foreman start;"
+  - docker ps -a
+  - docker run carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec rake test"
 rvm:
   - 2.3.1
   - 2.4.1
@@ -23,6 +34,7 @@ deploy:
   
 git:
   depth: 3
+  
 branches:
   only:
     - master
