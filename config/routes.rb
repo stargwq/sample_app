@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'room/show'
+
+  get 'room/index'
+
   mount ActionCable.server => '/cable'
 
   root "static_pages#home"
