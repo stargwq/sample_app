@@ -29,8 +29,8 @@ script:
   - bundle exec rake test
   - bundle exec rake test:$TEST_SUITE
   #./test.sh
-before_deploy: "echo 'ready deploy...'"  
-  
+before_deploy: "echo 'ready deploy...'"
+
 deploy:
  #- provider: ddd
   # email: "aaa"
@@ -38,7 +38,7 @@ deploy:
   provider: heroku
     #travis encrypt $(heroku auth:token) --add deploy.api_key
   api_key:
-    secure: aaQJbkmoKJMxqhRauGFWLkHIvXq3NlTXp6OM9gMksM7c1fyBpx4PmwRzFeWvNrcgDNBRDzqu0yuj70SG/cHFQfNRCSZeKLJ/XmU0XvqEUPA731i0YLUgn/K5tTfGoNO2X9QgylnJT/lb/62Na7ONWb4Rhron/baizpApoMXPDdJVfpiEm4aqCwPq4fnnsM7ruuuBK4dLoES+hN2MWbEIsDWdcCdjUByNqgb2JAGtp805oAH/rHvgMGG/8M5fGUoK/EAWqHb7d7dJFMF5+mIKYcu99I82rvRLpALFr91Io6Xow1qTFXAj2C+1hsUYoAq1+xppN6uzACP3ZWmd56N/JdVb0zHoYPuFn+lecSK9MZlqb7RFR4ZvRLXmJHFbj2OpfFc52foyYd6w6JdJjOwb3oSFgRmjnTurjnaTwmbOnSy/B22MwcX5B8qLpPkioDkbB6IYjx9X6eQRyRFVXhQsIaKfYtYzTktaChTsN+yI4t6u7S4e/PF63nRdKmj4Uy3yhaoQmhzH3dm+J7waeryaVPwgyxbMi8wIbX50lxsIbavKpci5o5DPQiJAdGoOLlRqeTrM4EnuofPRWvA79MIURjd69/3CC5uXgAbBfe4dPMscxaYHIzd+25rKComnOpnfucqDu47nb68bcoWBCqejLy5/UoYlqSKVmnT7aCQyYBU=
+    secure: rQk6lHk8MGnbP8AyHtX9JeMloo/RmECXt8Bxj7ZyCj4SZ+McAOQg99Pv1LEcBtV2Jo35kdK1ulTG5cYxCin1SgWd6xjzJJduqJH2gYnIMxjndxSPBn5JMWK5kLXufQ9Ln7iDHGTINUseLRamwphZiZN8dn0h1JUL+hgsTKrx2aiQUzwOfyTSJgJZo7S9+x4dPIL8clkkY9U1QQtIuQvlMkDpKhAnAYAzGgMTYBmTSUuguqFcJqfJtf5EHw7TS5NxGEz6S3YUY7R9GALqS9hY3SSJr+/BoW6z1AqOS/wIpVcHfeYN+BCfw5rBBaGh9XeoiL5V9Oucv5cUgx/KoOT7+jUWYkeuDIWrhV9lSSPBHmRIL6N0CAGNrsEbnijyH3PW2mXseiB9QxPt+dKttGzMXA8xoy0uFGmImI+LgHJmsBBzuIkV7ezRlv7Arq0d8jW/FLoqVaf7dqw6Zh7Pih8zntCTedYsufw3hbRlXjRynRQdVP8ZzyL9WIjQJ8+CtLEUeeTlfyqYy1cJ+u4rMnOk8IBDJK9x/wDbFu0vzXRFnfo2P7A1q+UVeqNrUaTFq+CKOeNFrFvpzn6P70USsIQ9XPYaXwKXqfEcWNxBYRozMiy5CYFeHquP3hY09VTO1k+Ew32AEx9lHWHbat0StRisQ7mjdxhQyMmfk38nNA1q/SA=
   on:
     all_branches: true
   run:
