@@ -16,7 +16,7 @@ script:
   - bundle exec rake db:migrate
   - bundle exec rake test
   - bundle exec rake test:$TEST_SUITE
-  /test.sh
+  #/test.sh
   
 deploy:
   skip_cleanup: true
