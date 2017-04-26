@@ -1,7 +1,5 @@
 sudo: false
 language: ruby
-script:
-  - bundle exec rake test
 rvm:
   - 2.3.1
   - 2.4.1
@@ -12,4 +10,12 @@ cache:
 
 install:
   - bundle install
+  
+script:
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
+  - bundle exec rake test
+  
+deploy:
+  skip_cleanup: true
 
