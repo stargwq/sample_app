@@ -30,7 +30,7 @@ branches:
     #- /^char.*$/
 bundler_args: --without development debug #不安装debug gem
 bundler_args: --retry 5 #如果网络超时，可以retry
-env:
+env: #可以分开跑测试
   - TEST_SUITE=units
   - TEST_SUITE=integeration
   
