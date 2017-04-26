@@ -35,16 +35,16 @@ deploy:
  #- provider: ddd
   # email: "aaa"
    #password: "aaa" #加密的  travis encrypt "YOUR PASSWORD" --add deploy.password
- - provider: heroku
+  - provider: heroku
     #travis encrypt $(heroku auth:token) --add deploy.api_key
-   api_key:
-     secure: aaQJbkmoKJMxqhRauGFWLkHIvXq3NlTXp6OM9gMksM7c1fyBpx4PmwRzFeWvNrcgDNBRDzqu0yuj70SG/cHFQfNRCSZeKLJ/XmU0XvqEUPA731i0YLUgn/K5tTfGoNO2X9QgylnJT/lb/62Na7ONWb4Rhron/baizpApoMXPDdJVfpiEm4aqCwPq4fnnsM7ruuuBK4dLoES+hN2MWbEIsDWdcCdjUByNqgb2JAGtp805oAH/rHvgMGG/8M5fGUoK/EAWqHb7d7dJFMF5+mIKYcu99I82rvRLpALFr91Io6Xow1qTFXAj2C+1hsUYoAq1+xppN6uzACP3ZWmd56N/JdVb0zHoYPuFn+lecSK9MZlqb7RFR4ZvRLXmJHFbj2OpfFc52foyYd6w6JdJjOwb3oSFgRmjnTurjnaTwmbOnSy/B22MwcX5B8qLpPkioDkbB6IYjx9X6eQRyRFVXhQsIaKfYtYzTktaChTsN+yI4t6u7S4e/PF63nRdKmj4Uy3yhaoQmhzH3dm+J7waeryaVPwgyxbMi8wIbX50lxsIbavKpci5o5DPQiJAdGoOLlRqeTrM4EnuofPRWvA79MIURjd69/3CC5uXgAbBfe4dPMscxaYHIzd+25rKComnOpnfucqDu47nb68bcoWBCqejLy5/UoYlqSKVmnT7aCQyYBU=
-   on:
-     all_branches: true
-   run:
-     - "rake db:migrate"
-     - restart
-     - "rake cleanup"
+    api_key:
+      secure: aaQJbkmoKJMxqhRauGFWLkHIvXq3NlTXp6OM9gMksM7c1fyBpx4PmwRzFeWvNrcgDNBRDzqu0yuj70SG/cHFQfNRCSZeKLJ/XmU0XvqEUPA731i0YLUgn/K5tTfGoNO2X9QgylnJT/lb/62Na7ONWb4Rhron/baizpApoMXPDdJVfpiEm4aqCwPq4fnnsM7ruuuBK4dLoES+hN2MWbEIsDWdcCdjUByNqgb2JAGtp805oAH/rHvgMGG/8M5fGUoK/EAWqHb7d7dJFMF5+mIKYcu99I82rvRLpALFr91Io6Xow1qTFXAj2C+1hsUYoAq1+xppN6uzACP3ZWmd56N/JdVb0zHoYPuFn+lecSK9MZlqb7RFR4ZvRLXmJHFbj2OpfFc52foyYd6w6JdJjOwb3oSFgRmjnTurjnaTwmbOnSy/B22MwcX5B8qLpPkioDkbB6IYjx9X6eQRyRFVXhQsIaKfYtYzTktaChTsN+yI4t6u7S4e/PF63nRdKmj4Uy3yhaoQmhzH3dm+J7waeryaVPwgyxbMi8wIbX50lxsIbavKpci5o5DPQiJAdGoOLlRqeTrM4EnuofPRWvA79MIURjd69/3CC5uXgAbBfe4dPMscxaYHIzd+25rKComnOpnfucqDu47nb68bcoWBCqejLy5/UoYlqSKVmnT7aCQyYBU=
+    on:
+      all_branches: true
+    run:
+      - "rake db:migrate"
+      - restart
+      - "rake cleanup"
  #prevent Travis CI from resetting your working directory and deleting all changes made during the build
   skip_cleanup: true
 
