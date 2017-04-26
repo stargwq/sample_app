@@ -15,6 +15,7 @@ script:
   - bundle exec rake db:create
   - bundle exec rake db:migrate
   - bundle exec rake test
+  - bundle exec rake test:$TEST_SUITE
   /test.sh
   
 deploy:
@@ -27,5 +28,12 @@ branches:
     - master
     #提供正则匹配分支
     #- /^char.*$/
+bundler_args: --without development debug #不安装debug gem
+bundler_args: --retry 5 #如果网络超时，可以retry
+env:
+  - TEST_SUITE=units
+  - TEST_SUITE=integeration
+  
+    
     
 
