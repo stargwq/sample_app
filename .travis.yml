@@ -58,5 +58,5 @@ branches:
   - master
 bundler_args: "--retry 5"
 env:
-- TEST_SUITE=models
-- TEST_SUITE=integeration
+  - TEST_SUITE=models
+  - TEST_SUITE=integeration
