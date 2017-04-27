@@ -62,3 +62,10 @@ bundler_args: "--retry 5"
 env:
   - TEST_SUITE=models
   - TEST_SUITE=integeration
+notifications:
+  email:
+    recipients:
+      - hl@fir.im
+      - liuhailianggwq@gmail.com
+    on_success: never # default: change
+    on_failure: always # default: always
