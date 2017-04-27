@@ -46,9 +46,9 @@ deploy:
   run:
     - "rake db:migrate"
     - restart
-    - "rake cleanup"
+#    - "rake cleanup"
  #prevent Travis CI from resetting your working directory and deleting all changes made during the build
-  skip_cleanup: true
+#  skip_cleanup: true
 
 after_deploy:
   - ./after_deploy_1.sh
