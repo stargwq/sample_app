@@ -36,6 +36,8 @@ deploy:
   # email: "aaa"
    #password: "aaa" #加密的  travis encrypt "YOUR PASSWORD" --add deploy.password
   provider: heroku
+
+  app: morning-headland-50943
     #travis encrypt $(heroku auth:token) --add deploy.api_key
   api_key:
     secure: rQk6lHk8MGnbP8AyHtX9JeMloo/RmECXt8Bxj7ZyCj4SZ+McAOQg99Pv1LEcBtV2Jo35kdK1ulTG5cYxCin1SgWd6xjzJJduqJH2gYnIMxjndxSPBn5JMWK5kLXufQ9Ln7iDHGTINUseLRamwphZiZN8dn0h1JUL+hgsTKrx2aiQUzwOfyTSJgJZo7S9+x4dPIL8clkkY9U1QQtIuQvlMkDpKhAnAYAzGgMTYBmTSUuguqFcJqfJtf5EHw7TS5NxGEz6S3YUY7R9GALqS9hY3SSJr+/BoW6z1AqOS/wIpVcHfeYN+BCfw5rBBaGh9XeoiL5V9Oucv5cUgx/KoOT7+jUWYkeuDIWrhV9lSSPBHmRIL6N0CAGNrsEbnijyH3PW2mXseiB9QxPt+dKttGzMXA8xoy0uFGmImI+LgHJmsBBzuIkV7ezRlv7Arq0d8jW/FLoqVaf7dqw6Zh7Pih8zntCTedYsufw3hbRlXjRynRQdVP8ZzyL9WIjQJ8+CtLEUeeTlfyqYy1cJ+u4rMnOk8IBDJK9x/wDbFu0vzXRFnfo2P7A1q+UVeqNrUaTFq+CKOeNFrFvpzn6P70USsIQ9XPYaXwKXqfEcWNxBYRozMiy5CYFeHquP3hY09VTO1k+Ew32AEx9lHWHbat0StRisQ7mjdxhQyMmfk38nNA1q/SA=
