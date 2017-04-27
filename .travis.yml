@@ -71,7 +71,7 @@ notifications:
     on_success:  # default: change
     on_failure: always # default: always
 
-os: osx
+#os: osx
 
 
 #   #no log
