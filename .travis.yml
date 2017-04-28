@@ -18,10 +18,10 @@ rvm:
   - 2.3.1
   - 2.4.1
 cache:
-  timeout: 1000
   bundler: true
+ # cocoapods: false 可以单独禁用
   directories:
-    - flow_test
+    - Gemfile
 install:
   - bundle install
 script:
@@ -74,39 +74,3 @@ notifications:
 #os: osx
 
 
-#   #no log
-
-#密码和证书安全
-
-# 对于密码等敏感信息，Travis CI提供了2种解决方案：
-
- #对密码等敏感信息进行加密，然后再构建环境时解密。
- #在Travis CI控制台设置环境变量，然后使用System.getenv()获取值。
-
-# Build Matrix
-#rvm:
-#  - 1.9.3
-#  - 2.0.0
-#  - 2.2
-#  - ruby-head
-#  - jruby
-#  - rbx-2
-#  - ree
-#gemfile:
-#  - gemfiles/Gemfile.rails-2.3.x
-#  - gemfiles/Gemfile.rails-3.0.x
-#  - gemfiles/Gemfile.rails-3.1.x
-#  - gemfiles/Gemfile.rails-edge
-#env:
-#  - ISOLATED=true
-#  - ISOLATED=false
-
-#matrix:
-#  exclude:
-#  - rvm: 1.9.3
-#    gemfile: gemfiles/Gemfile.rails-2.3.x
-#    env: ISOLATED=true
-#  - rvm: jruby
-#    gemfile: gemfiles/Gemfile.rails-2.3.x
-#    env: ISOLATED=true
-#test2
